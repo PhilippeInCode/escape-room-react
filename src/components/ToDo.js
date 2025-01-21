@@ -3,7 +3,7 @@ import ToDoForm from "./ToDoForm";
 import {RiCloseCircleLine} from "react-icons/ri";
 import {TiEdit} from "react-icons/ti";
 
-function ToDo(toDos, removeToDo, updateToDo){
+function ToDo({toDos, removeToDo, updateToDo}){
     const [edit, setEdit] = useState({
         id: null,
         value: ''

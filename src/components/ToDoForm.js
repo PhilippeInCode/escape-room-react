@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 
 function ToDoForm (props){
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState(props.edit ? props.edit.value : '');
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -19,9 +19,18 @@ function ToDoForm (props){
     }
 
     return (
-        <form className='toDo-form'>
-            <input type='text' placeholder='Add a to do' value={input} name='text' className='toDo-input' onChange={handleChange}/>
-            <button className='toDo-button'>Add something to do</button>
+        <form className='toDo-form' onSubmit={handleSubmit}>
+            {props.edit ? (
+                <>
+                    <input type='text' placeholder='Update your item' value={input} name='text' className='toDo-input edit' onChange={handleChange}/>
+                    <button className='toDo-button edit'>Update</button>
+                </>
+            ) : (
+                <>
+                    <input type='text' placeholder='Add a to do' value={input} name='text' className='toDo-input' onChange={handleChange}/>
+                    <button className='toDo-button'>Add something to do</button>
+                </>
+            )}
         </form>
     );
 }
